@@ -8,11 +8,13 @@ document.getElementById("all").addEventListener('click', getAll);
 document.getElementById("search").addEventListener('click', searchStates);
 //Get all states
 function getAll(ev) {
+    ev.preventDefault();
     const url = "https://restcountries.eu/rest/v2/all";
     getApi(url, fillStates);
 }
 //Search the states
 function searchStates(ev) {
+    ev.preventDefault();
     let input = document.getElementById("input").value;
     const url = "https://restcountries.eu/rest/v2/name/" + input;
     getApi(url, fillStates);
@@ -20,7 +22,7 @@ function searchStates(ev) {
 //Build the state in the table
 function fillStates() {
     let states = JSON.parse(this.responseText);
-    const head = `<tr><th>State Name</th><th>Top Level Domain</th><th>Capital</th><th>Currencies</th><th>Border</th><th>Flag</th></tr>`;
+    const head = `<hr><tr><th>State Name</th><th>Top Level Domain</th><th>Capital</th><th>Currencies</th><th>Border</th><th>Flag</th></tr>`;
     console.log("ok");
     const html = states.map(state => `<tr>
             <td>${state.name}</td>
@@ -33,6 +35,6 @@ function fillStates() {
     let stateList = document.getElementById("stateList");
     if (stateList) {
         const con = html === "" ? "mistake" : html;
-        stateList.innerHTML = "<table border = `1`>" + head + con + "</table>";
+        stateList.innerHTML = "<table>" + head + con + "</table>";
     }
 }
