@@ -16,8 +16,13 @@ function getAll(ev) {
 function searchStates(ev) {
     ev.preventDefault();
     let input = document.getElementById("input").value;
-    const url = "https://restcountries.eu/rest/v2/name/" + input;
-    getApi(url, fillStates);
+    if (input === "") {
+        alert("Please write something in the box before pressing the search button");
+    }
+    else {
+        const url = "https://restcountries.eu/rest/v2/name/" + input;
+        getApi(url, fillStates);
+    }
 }
 //Build the state in the table
 function fillStates() {
