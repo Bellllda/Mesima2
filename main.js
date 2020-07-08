@@ -27,13 +27,15 @@ function searchStates(ev) {
 //Build the state in the table
 function fillStates() {
     let states = JSON.parse(this.responseText);
-    const head = `<hr><tr><th>State Name</th><th>Top Level Domain</th><th>Capital</th><th>Currencies</th><th>Border</th><th>Flag</th></tr>`;
+    const head = `<hr><tr><th>State Name</th><th>Top Level Domain</th><th>Capital</th><th>Currency Code</th><th>Currency Name</th><th>Currency Symbol</th><th>Border</th><th>Flag</th></tr>`;
     console.log("ok");
     const html = states.map(state => `<tr>
             <td>${state.name}</td>
             <td>${state.topLevelDomain}</td>
             <td>${state.capital}</td>
-            <td>${state.currencies[0].code},  ${state.currencies[0].name},  ${state.currencies[0].symbol}</td>
+            <td>${state.currencies[0].code}</td>
+            <td>${state.currencies[0].name}</td>
+            <td>${state.currencies[0].symbol}</td>
             <td>${state.borders}</td>
             <td><img src="${state.flag}"</td>
         </tr>`).join('');
